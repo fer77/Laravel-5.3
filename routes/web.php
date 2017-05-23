@@ -11,6 +11,9 @@
 |
 */
 
+use App\Mail\WelcomeToLaracasts;
+
 Route::get('/', function () {
-    return view('users', ['users' => App\User::paginate(4)]);
+	$email = new WelcomeToLaracasts(new App\User(['name' => 'Linda']));
+    Mail::to('ffmp777@example.com')->send($email);
 });
