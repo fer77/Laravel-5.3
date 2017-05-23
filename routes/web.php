@@ -12,5 +12,5 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('users', ['users' => App\User::paginate(4)]);
 });
