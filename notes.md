@@ -6,11 +6,11 @@ Query builders returns collection objects instead of arrays.  The goal is to mak
 
 ## 3
 
-**cache** 
+**cache**
 
 ## 4
 
-`resources/assets/js/app.js` 
+`resources/assets/js/app.js`
 
 ```js
 require('./bootstrap'); // Sets up common globals you might want
@@ -34,3 +34,7 @@ Laravel uses **reflection** to read all public properties in this class(mail), p
 
 3. Set up:
 	1. .env: set up mail provider.
+
+## 7
+
+When using the `foreach` or `forelse` directives, Blade provides a new `$loop` object that is available to each iteration and contains details about the loop.
