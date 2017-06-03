@@ -38,3 +38,7 @@ Laravel uses **reflection** to read all public properties in this class(mail), p
 ## 7
 
 When using the `foreach` or `forelse` directives, Blade provides a new `$loop` object that is available to each iteration and contains details about the loop.
+
+## 8
+
+`belongsToMany` has a new `toggle()` method for all its relationships, that solves the need to delete a pivot table record if it exists, or adding one if it doesn't exist. 
