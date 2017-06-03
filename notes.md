@@ -41,4 +41,6 @@ When using the `foreach` or `forelse` directives, Blade provides a new `$loop` o
 
 ## 8
 
-`belongsToMany` has a new `toggle()` method for all its relationships, that solves the need to delete a pivot table record if it exists, or adding one if it doesn't exist. 
+`belongsToMany` has a new `toggle()` method for all its relationships, that solves the need to delete a pivot table record if it exists, or adding one if it doesn't exist.
+
+## 9
