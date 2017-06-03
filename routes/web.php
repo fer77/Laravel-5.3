@@ -14,6 +14,9 @@
 use App\Mail\WelcomeToLaracasts;
 
 Route::get('/', function () {
-	$email = new WelcomeToLaracasts(new App\User(['name' => 'Linda']));
-    Mail::to('ffmp777@example.com')->send($email);
+$users = collect(['Joe', 'Jack', 'Susan', 'Jane'])->map(function($name) {
+	return new App\User(['name'=>$name]);
+});
+
+return view('welcome', compact('users'));
 });

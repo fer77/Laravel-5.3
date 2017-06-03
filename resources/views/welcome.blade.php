@@ -14,10 +14,9 @@
         <!-- Styles -->
     </head>
     <body>
-        <div class="container">
-            <h1>Website</h1>
-            <example id="app"></example>
-        </div>
+        @foreach ($users as $user)
+        {{ $user->name }}{{ $loop->remaining ? ', ' : '' }}
+        @endforeach
 
         <script src="/js/app.js"></script>
     </body>
