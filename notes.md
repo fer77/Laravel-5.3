@@ -57,3 +57,7 @@ The template for the email is in `Notifications/resources/views/email.blade.php`
 Database notifications are stored in the database, where they can be fetch and displayed for the user.
 
 _Have one view per notification_.
+
+## 11
+
+For slack notifications, slack offers incoming webhooks.  These notifications can be set to private notifications.
