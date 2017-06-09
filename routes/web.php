@@ -1,5 +1,9 @@
 <?php
-use App\Notifications\LessonPublished;
+use App\Notifications\LessonUpdated;
+use App\Notifications\SubscriptionCanceled;
+
+Auth::loginUsingId(1);
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,8 +18,6 @@ use App\Notifications\LessonPublished;
 use App\Mail\WelcomeToLaracasts;
 
 Route::get('/', function () {
-	$user = App\User::first();
-	$lesson = App\Lesson::first();
-
-	$user->notify(new LessonPublished($lesson));
+	Auth::user()->notify(new SubscriptionCanceled);
+	// return view('welcome');
 });
