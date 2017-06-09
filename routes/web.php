@@ -1,5 +1,5 @@
 <?php
-
+use App\Notifications\LessonPublished;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +14,8 @@
 use App\Mail\WelcomeToLaracasts;
 
 Route::get('/', function () {
-$users = collect(['Joe', 'Jack', 'Susan', 'Jane'])->map(function($name) {
-	return new App\User(['name'=>$name]);
-});
+	$user = App\User::first();
+	$lesson = App\Lesson::first();
 
-return view('welcome', compact('users'));
+	$user->notify(new LessonPublished($lesson));
 });
