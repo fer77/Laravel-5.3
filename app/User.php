@@ -26,4 +26,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function routeNotificationForSlack()
+    {
+      return $this->slack_webhook;// Should be in a form where a user can register the webhook (dynamic).
+    }
 }
