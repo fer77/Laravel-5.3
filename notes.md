@@ -44,3 +44,10 @@ When using the `foreach` or `forelse` directives, Blade provides a new `$loop` o
 `belongsToMany` has a new `toggle()` method for all its relationships, that solves the need to delete a pivot table record if it exists, or adding one if it doesn't exist.
 
 ## 9
+
+Creating a notification that sends an email:
+` //...->notify();` method in the _User.php_ model.
+
+Header of the email and the signature ('regards...') can be configured from `config/app.php`
+
+The template for the email is in `Notifications/resources/views/email.blade.php`
