@@ -1,5 +1,6 @@
 <?php
 use App\Notifications\LessonUpdated;
+use App\Notifications\PaymentReceived;
 use App\Notifications\SubscriptionCanceled;
 
 Auth::loginUsingId(1);
@@ -18,6 +19,8 @@ Auth::loginUsingId(1);
 use App\Mail\WelcomeToLaracasts;
 
 Route::get('/', function () {
-	Auth::user()->notify(new SubscriptionCanceled);
-	// return view('welcome');
+	$user = App\User::find(2);
+	$admin = App\User::find(1);
+
+	$admin->notify(new PaymentReceived($user));
 });
