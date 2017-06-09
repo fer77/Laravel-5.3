@@ -51,3 +51,9 @@ Creating a notification that sends an email:
 Header of the email and the signature ('regards...') can be configured from `config/app.php`
 
 The template for the email is in `Notifications/resources/views/email.blade.php`
+
+## 10
+
+Database notifications are stored in the database, where they can be fetch and displayed for the user.
+
+_Have one view per notification_.
