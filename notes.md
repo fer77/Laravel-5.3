@@ -61,3 +61,9 @@ _Have one view per notification_.
 ## 11
 
 For slack notifications, slack offers incoming webhooks.  These notifications can be set to private notifications.
+
+
+## 12
+
+Avatars are stored in storage/app/avatars.
+The `->store('avatars');` calls the 'store' method in UploadedFile.php.  The 'store' method can be passed a `$path` and `$disk` that can be anything in the _filesystems.php_

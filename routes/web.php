@@ -1,26 +1,27 @@
 <?php
-use App\Notifications\LessonUpdated;
-use App\Notifications\PaymentReceived;
-use App\Notifications\SubscriptionCanceled;
-
 Auth::loginUsingId(1);
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| This file is where you may define all of the routes that are handled
+| by your application. Just tell Laravel the URIs it should respond
+| to using a Closure or controller method. Build something great!
 |
 */
 
-use App\Mail\WelcomeToLaracasts;
-
 Route::get('/', function () {
-	$user = App\User::find(2);
-	$admin = App\User::find(1);
+    return view('welcome');
+});
 
-	$admin->notify(new PaymentReceived($user));
+Route::post('avatars', function() {
+	//request()->file('avatar')->store('avatars');// specifies a folder name.
+	//if no unique file is needed then:
+	$file = request()->file('avatar');
+	$ext = $file->extension();// you can also do $file->extension()
+
+	$file->storeAs('avatars/' . auth()->id(), "avatar.{$ext}");// to make it jeneric and not over-write it everytime (don't forget the "" when using {$...}).
+
+	return back();
 });
