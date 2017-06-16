@@ -16,3 +16,8 @@ use Illuminate\Foundation\Inspiring;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 });
+
+Artisan::command('generate:model {name}', function (App\ModelGenerator $generator) {
+    $model = $this->argument('name');
+    $generator->build($this->argument('name'));
+})->describe('Generate a special model.');
