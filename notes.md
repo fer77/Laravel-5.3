@@ -67,3 +67,21 @@ For slack notifications, slack offers incoming webhooks.  These notifications ca
 
 Avatars are stored in storage/app/avatars.
 The `->store('avatars');` calls the 'store' method in UploadedFile.php.  The 'store' method can be passed a `$path` and `$disk` that can be anything in the _filesystems.php_
+
+## 13
+
+Laravel Passport, won't install in laravel 5.3.
+
+1. Require laravel/passport in the project's `composer.json` file.
+2. Register the passport service provider in `config/app.php` file, `Laravel\Passport\PassportServiceProvider::class,`
+3. ...follow the steps in https://laravel.com/docs/5.4/passport#installation
+
+`php artisan passport:install` generates an encription key that lets passport securly create password tokens.
+
+`use Laravel\Passport\HasApiTokens;` provides useful functions for accessing the current token for the authenticated user and the scope available to that user.
+
+Passport ships with vue components ready to use (need to be registered in `app.js`) in our front-end:
+
+`resources/assets/js/components/passport`
+
+`php artisan vendor:publish --tags=` publishes a subset of resources that can be published from all our packages.
