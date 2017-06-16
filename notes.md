@@ -85,3 +85,43 @@ Passport ships with vue components ready to use (need to be registered in `app.j
 `resources/assets/js/components/passport`
 
 `php artisan vendor:publish --tags=` publishes a subset of resources that can be published from all our packages.
+
+## 14
+
+**Closure-Based commands** `/project/routes/console.php` commands created here do not need to be registered in `/laravel53/app/Console/Kernel.php`.  Structure of this file is similar to the `/project/routes/web.php`.
+
+As soon as a command is created here, it will be available when running `php artisan`.
+Commands in `/project/routes/console.php` can be ran with `php artisan inspire` 
+
+```php
+Artisan::command('generate:model {name}', function () {
+    exec('touch app/' . $this->argument('name') . '.php');//creates a file
+})->describe('Generate a special model.');
+```
+
+```php
+Artisan::command('generate:model {name}', function () {
+    $model = $this->argument('name');
+    File::put("app/{$model}.php", "class{}");// Creates a template with 'class{}'
+})->describe('Generate a special model.');
+```
+
+```php
+Artisan::command('generate:model {name}', function () {
+    $model = $this->argument('name');
+    $template = File::get('app/templates/model.txt');
+
+    $compiled = str_replace('{name}', $model, $template);
+
+    File::put("app/{$model}.php", $compiled);
+})->describe('Generate a special model.');
+// Will create or overwritte existing file with the template file.
+```
+
+```php
+//If more than one generator, use the automatic resolution.
+Artisan::command('generate:model {name}', function (App\ModelGenerator $generator) {
+    $model = $this->argument('name');
+    $generator->build($this->argument('name'));
+})->describe('Generate a special model.');
+```
