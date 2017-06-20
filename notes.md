@@ -125,3 +125,13 @@ Artisan::command('generate:model {name}', function (App\ModelGenerator $generato
     $generator->build($this->argument('name'));
 })->describe('Generate a special model.');
 ```
+
+## 17
+
+Laravel 5.3, introduced a static `fake` method to a number of facades.  This `fake` method can be called to replace the underlying class with a minimal fake version, for the purposes of testing.
+
+files to work with:
+
+- `/laravel53/vendor/laravel/framework/src/Illuminate/Support/Testing/Fakes/EventFake.php`
+- `/laravel53/vendor/laravel/framework/src/Illuminate/Support/Facades/Event.php`
+- `/laravel53/tests/ExampleTest.php`
