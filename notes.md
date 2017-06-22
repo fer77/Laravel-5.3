@@ -135,3 +135,7 @@ files to work with:
 - `/laravel53/vendor/laravel/framework/src/Illuminate/Support/Testing/Fakes/EventFake.php`
 - `/laravel53/vendor/laravel/framework/src/Illuminate/Support/Facades/Event.php`
 - `/laravel53/tests/ExampleTest.php`
+
+## 18
+
+**Rule** class fluently builds up readable constraints.
