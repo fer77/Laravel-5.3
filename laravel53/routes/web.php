@@ -1,5 +1,5 @@
 <?php
-
+use App\Events\UserBecameForeverSupporter;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/events', function () {
+	$user = App\User::first();
+	
+    event(new UserBecameForeverSupporter($user));
+
+    return 'Done';
 });

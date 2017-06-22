@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\UserBecameForeverSupporter;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -11,9 +12,16 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
-    public function testBasicExample()
+    public function it_fakes_events()
     {
-        $this->visit('/')
-             ->see('Laravel');
+        Event::fake();
+        // Trigger the event.
+        $this->visit('/events');
+
+        $user = App\User::first();
+
+        Event::assertFired(UserBecameForeverSupporter::class, function($e) use ($user) {
+            return $e->user->id == $user->id;
+        });
     }
 }
